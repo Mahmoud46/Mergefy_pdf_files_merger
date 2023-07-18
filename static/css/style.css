@@ -1,0 +1,154 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('../imgs/wallpaperflare.com_wallpaper.jpg') no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.container {
+    width: 400px;
+    height: 500px;
+    background: rgba(0, 0, 0, 0.4);
+    position: relative;
+    backdrop-filter: blur(15px);
+    padding: 10px;
+    overflow: hidden;
+}
+
+.logo {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(252, 252, 252, 0.2);
+    padding: 10px;
+    color: #fcfcfc;
+}
+
+.container .head p {
+    text-transform: uppercase;
+}
+
+.submit button,
+.cards-container .card button,
+.container .head button {
+    padding: 10px;
+    outline: none;
+    border: none;
+    background: none;
+    border: 1px solid rgba(252, 252, 252, 0.2);
+    color: #fcfcfc;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.5s ease-in-out all;
+}
+
+.submit button:hover,
+.cards-container .card button:hover,
+.container .head button:hover {
+    background: rgba(252, 252, 252, 0.2);
+}
+
+.cards-container {
+    overflow: hidden;
+    overflow-y: auto;
+    max-height: 320px;
+    width: 100%;
+    padding: 0 10px;
+    transition: 0.5s ease-in-out all;
+}
+
+.cards-container .card {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fcfcfc;
+    margin: 10px 0;
+}
+
+.cards-container .card p {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.cards-container .card p span {
+    font-size: 30px;
+    font-weight: 300;
+}
+
+.cards-container .card button {
+    font-size: 12px;
+}
+
+/* width */
+.cards-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+.cards-container::-webkit-scrollbar-track {
+    background: none;
+}
+
+/* Handle */
+.cards-container::-webkit-scrollbar-thumb {
+    background: rgb(0, 0, 0, 0.2);
+}
+
+/* Handle on hover */
+.cards-container::-webkit-scrollbar-thumb:hover {
+    background: rgb(0, 0, 0, 0.5);
+
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    height: 60px;
+    gap: 10px;
+}
+
+.submit button {
+    pointer-events: all;
+}
+
+.submit button.inactive {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.layout {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.layout.active {
+    display: block;
+}
