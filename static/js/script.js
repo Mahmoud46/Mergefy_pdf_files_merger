@@ -3,8 +3,10 @@ let uploadBtn = document.querySelector('button.upload'),
     cardContainer = document.querySelector('.cards-container'),
     mergeBtn = document.querySelector('.merge'),
     downloadBtn = document.querySelector('.downlaod'),
-    layout = document.querySelector('.layout');
-let src_pre = '';
+    layout = document.querySelector('.layout'),
+    fileCount = document.querySelector('span.count');
+let src_pre = '',
+    count = 0;
 
 uploadBtn.addEventListener('click', _ => fileInput.click());
 
@@ -30,10 +32,11 @@ mergeBtn.addEventListener('click', mergePDFS);
 function addCardToCardContainer(fileName, code) {
     cardContainer.innerHTML += `
                             <div class="card" code="${code}">
-                                <p class="name"><span class="material-symbols-outlined">description</span>${fileName}</p>
-                                <button class="delete">delete</button>
+                                <p class="name"><img src="./static/imgs/pdf-icon.svg" width="30px" alt="">${fileName}</p>
+                                <button class="delete"><span class="material-symbols-outlined">close</span></button>
                             </div>
                         `;
+    fileCount.innerText = ++count;
     activateDeleteCard();
 }
 
@@ -41,8 +44,9 @@ function activateDeleteCard() {
     let cards = document.querySelectorAll('.card');
     cards.forEach(card => {
         card.querySelector('.delete').addEventListener('click', e => {
-            e.target.parentNode.remove();
+            e.target.parentNode.parentNode.remove();
             downloadBtn.classList.contains('inactive') ? null : downloadBtn.classList.add('inactive');
+            fileCount.innerText = --count;
             checkEmpty();
         });
     });

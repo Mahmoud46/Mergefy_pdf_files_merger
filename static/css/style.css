@@ -11,7 +11,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('../imgs/wallpaperflare.com_wallpaper.jpg') no-repeat;
+    background: linear-gradient(rgba(195, 209, 179, 0.5), rgba(174, 198, 163, 0.9)), url('../imgs/pexels-ivo-rainha-1290141.jpg') no-repeat;
     background-position: center;
     background-size: cover;
 }
@@ -19,7 +19,7 @@ body {
 .container {
     width: 450px;
     height: 550px;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(231, 99, 97, 0.5);
     position: relative;
     backdrop-filter: blur(15px);
     padding: 10px;
@@ -33,71 +33,63 @@ body {
     align-items: center;
 }
 
+
 .container .head {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid rgba(252, 252, 252, 0.2);
-    padding: 10px;
     color: #fcfcfc;
+    padding: 0 10px;
 }
 
 .container .head p {
-    text-transform: uppercase;
+    position: relative;
 }
 
-.submit button,
-.cards-container .card button,
-.container .head button {
-    padding: 10px;
-    outline: none;
-    border: none;
-    background: none;
-    border: 1px solid rgba(252, 252, 252, 0.2);
-    color: #fcfcfc;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: 0.5s ease-in-out all;
-}
-
-.submit button:hover,
-.cards-container .card button:hover,
-.container .head button:hover {
-    background: rgba(252, 252, 252, 0.2);
+.container .head p span {
+    position: absolute;
+    background: #eee7d5;
+    color: #e76361;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -10px;
+    right: -10px;
+    border-radius: 50%;
 }
 
 .cards-container {
     overflow: hidden;
     overflow-y: auto;
-    max-height: 320px;
+    max-height: 380px;
     width: 100%;
     padding: 0 10px;
     transition: 0.5s ease-in-out all;
 }
 
 .cards-container .card {
-    background: rgba(0, 0, 0, 0.2);
-    padding: 10px;
+    background: rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: #fcfcfc;
     margin: 10px 0;
+    padding: 5px;
 }
 
 .cards-container .card p {
     display: flex;
-    gap: 5px;
+    gap: 10px;
     align-items: center;
-}
-
-.cards-container .card p span {
-    font-size: 30px;
-    font-weight: 300;
-}
-
-.cards-container .card button {
-    font-size: 12px;
+    text-transform: uppercase;
+    font-size: 20px;
+    color: #eee7d5;
+    width: 90%;
+    overflow: hidden;
 }
 
 /* width */
@@ -112,29 +104,72 @@ body {
 
 /* Handle */
 .cards-container::-webkit-scrollbar-thumb {
-    background: rgb(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.1);
 }
 
 /* Handle on hover */
 .cards-container::-webkit-scrollbar-thumb:hover {
-    background: rgb(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5);
 
 }
 
-.submit {
+.btns {
+    display: flex;
+}
+
+button {
+    pointer-events: all;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: none;
+    border: none;
+    position: relative;
+}
+
+button span {
+    cursor: pointer;
     padding: 10px;
-    height: 60px;
-    gap: 10px;
+    font-size: 25px;
+    font-weight: 300;
+    color: #eee7d5;
+    transition: 0.5s ease-in-out all;
 }
 
-.submit button {
-    pointer-events: all;
+button span:hover {
+    background: #eee7d5;
+    color: #e76361;
 }
 
-.submit button.inactive {
+.btns button span:last-child {
+    position: absolute;
+    font-size: 10px;
+    text-transform: uppercase;
+    background: #eee7d5;
+    color: #e76361;
+    top: -30px;
+    padding: 5px;
+    opacity: 0;
+    transition: 0.5s ease-in-out all;
+}
+
+.btns button span:last-child::before {
+    position: absolute;
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: #eee7d5;
+    z-index: -1;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.btns button:hover span:last-child {
+    opacity: 1;
+}
+
+button.inactive {
     opacity: 0.5;
     pointer-events: none;
 }

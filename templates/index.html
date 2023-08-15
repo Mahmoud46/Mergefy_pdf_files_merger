@@ -7,23 +7,30 @@
     <link rel="stylesheet" href="./static/css/style.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="shortcut icon" href="./static/imgs/fav-icon.svg" type="image/x-icon">
-    <title>Mergefy</title>
+    <link rel="shortcut icon" href="./static/imgs/fav-icon_new.svg" type="image/x-icon">
+    <title>PowrPdf</title>
 </head>
 
 <body>
     <div class="container">
         <div class="logo"><img src="./static/imgs/main-logo.svg" width="150px" alt=""></div>
         <div class="head">
-            <p>Upload PDF to merge</p>
-            <button class="upload">Upload</button>
+            <p><img src="./static/imgs/pdf-icon.svg" width="25px" alt=""><span class="count">0</span></p>
+            <div class="btns">
+                <button class="upload"><span class="material-symbols-outlined">
+                        upload
+                    </span><span>Uplaod</span></button>
+                <button class="merge inactive"><span class="material-symbols-outlined">
+                        cell_merge
+                    </span><span>Merge</span></button>
+                <button class="downlaod inactive"><span class="material-symbols-outlined">
+                        download
+                    </span><span>Download</span></button>
+            </div>
+
             <input type="file" hidden>
         </div>
         <div class="cards-container">
-        </div>
-        <div class="submit">
-            <button class="merge inactive">Merge</button>
-            <button class="downlaod inactive">Download</button>
         </div>
     </div>
     <div class="layout">
