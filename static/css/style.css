@@ -226,4 +226,5 @@ button.inactive {
 .error>span:hover {
     color: #eee7d5;
     background: #e76361;
+    /*  */
 }
