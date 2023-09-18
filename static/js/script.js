@@ -4,6 +4,8 @@ let uploadBtn = document.querySelector('button.upload'),
     mergeBtn = document.querySelector('.merge'),
     downloadBtn = document.querySelector('.downlaod'),
     layout = document.querySelector('.layout'),
+    errorWindow = document.querySelector('.error'),
+    clsErrorWindowBtn = document.querySelector('.cls-error'),
     fileCount = document.querySelector('span.count');
 let src_pre = '',
     count = 0;
@@ -18,7 +20,7 @@ fileInput.addEventListener('input', _ => {
         reader.onload = _ => {
             let url = reader.result;
             console.log(file)
-            addCardToCardContainer(file.name.length > 25 ? `${file.name.split('').splice(0, 25).join('')}..` : file.name, url);
+            addCardToCardContainer(file.name, file.name.length > 20 ? `${file.name.split('').splice(0, 20).join('')}..` : file.name, url);
             fileInput.value = '';
             layout.classList.remove('active');
             checkEmpty();
@@ -28,12 +30,13 @@ fileInput.addEventListener('input', _ => {
 });
 
 mergeBtn.addEventListener('click', mergePDFS);
+clsErrorWindowBtn.addEventListener('click', _ => errorWindow.classList.remove('active'));
 
-function addCardToCardContainer(fileName, code) {
+function addCardToCardContainer(originalName, fileName, code) {
     cardContainer.innerHTML += `
                             <div class="card" code="${code}">
-                                <p class="name"><img src="./static/imgs/pdf-icon.svg" width="30px" alt="">${fileName}</p>
-                                <button class="delete"><span class="material-symbols-outlined">close</span></button>
+                                <p title="${originalName}" class="name"><img src="./static/imgs/pdf-icon.svg" width="30px" alt="">${fileName}</p>
+                                <button class="delete" title="Remove"><span class="material-symbols-outlined">close</span></button>
                             </div>
                         `;
     fileCount.innerText = ++count;
@@ -92,6 +95,8 @@ function sendDataToSurver(filesCode) {
         }),
     }).then(response => {
         if (response.status !== 200) {
+            layout.classList.remove('active');
+            errorWindow.classList.add('active');
             console.log(`Response status was not 200: ${response.status}`);
             return;
         }

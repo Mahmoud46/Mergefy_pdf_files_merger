@@ -90,6 +90,7 @@ body {
     color: #eee7d5;
     width: 90%;
     overflow: hidden;
+    cursor: pointer;
 }
 
 /* width */
@@ -174,7 +175,8 @@ button.inactive {
     pointer-events: none;
 }
 
-.layout {
+.layout,
+.error {
     position: absolute;
     top: 0;
     left: 0;
@@ -185,7 +187,8 @@ button.inactive {
     backdrop-filter: blur(15px);
 }
 
-.layout.active {
+.layout.active,
+.error.active {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -193,4 +196,34 @@ button.inactive {
 
 .layout.active img {
     opacity: 0.9;
+}
+
+.error .error-msg {
+    text-align: center;
+    color: #eee7d5;
+}
+
+.error-msg span:first-child {
+    font-size: 100px;
+}
+
+.error-msg br+span {
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.error>span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    font-size: 25px;
+    cursor: pointer;
+    transition: 0.5s ease-in-out all;
+    color: #e76361;
+}
+
+.error>span:hover {
+    color: #eee7d5;
+    background: #e76361;
 }
